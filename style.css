@@ -6,6 +6,7 @@
     box-sizing: border-box;
     height:100%;
     font-family: arial;
+    color:rgb(88, 32, 4);
 }
 
 body {
@@ -96,7 +97,11 @@ footer{
     padding: 15px;
     padding-bottom: 30px;
     border-radius: 7px;
+    background-color: rgb(121, 61, 29);
+    color:blanchedalmond;
 }
+
+
 
 .Proposer{
     border:2px solid maroon;
@@ -104,4 +109,6 @@ footer{
     padding: 15px;
     padding-bottom: 30px;
     border-radius: 7px;
+    background-color: rgb(121, 61, 29);
+    color:blanchedalmond;
 }
