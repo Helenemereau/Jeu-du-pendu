@@ -5,7 +5,7 @@ let lettres = document. querySelectorAll(".lettre");
 
 const motADecouvrir = ["bonzai", "colombe", "chevrefeuille", "astronaute", "documentaire", "iceberg", "biscornu", "horodateur", "hirondelle", "avalanche", "jacinthe", "charismatique", "bowling", "bibliophile", "architecture", "bourlingueur", "bibliotheque", "avalanche", "chronophrage", "carapace", "herisson", "escargot", "bateau", "scarabee", "telepherique", "feerique", "montagnard", "escapade", "ratatouille", "correspondance", "biodiversite", "parfum", "lecture", "poussette", "ordinateur", "concept", "concentration", "immersion"];
 
-let MotAAfficher = []
+
 
 
 
@@ -45,6 +45,7 @@ lettre.addEventListener("mouseout", ()=> {
 });
 
 });
+//_____________________________________________________________________________
 
 //Fonction pour choisir le mot à deviner
 
@@ -64,20 +65,24 @@ const motDivise = mot.split("");
 
 //console.log(motDivise);
 
+//_____________________________________________________________________________
+
 //créer les cases avec underscrores à découvrir
 
 function creerCasesAvecUnderscores(mot) {
-    const lettresCachées = [];
-    for (let motDivise of mot) {
-      if (motDivise === ' ') {
-        lettresCachées.push(' ');
+    const casesAvecUnderscores = [];
+    for (let lettre of mot) {
+      if (lettre === ' ') {
+        casesAvecUnderscores.push(' ');
       } else {
-        lettresCachées.push('_');
+        casesAvecUnderscores.push('_');
       }
     }
-    return lettresCachées;
+    return casesAvecUnderscores;
   }
   
+
+  //
   function afficherCasesSurDOM(casesAvecUnderscores) {
     const conteneurCases = document.getElementById("cases"); 
   
@@ -85,16 +90,17 @@ function creerCasesAvecUnderscores(mot) {
       const caseDiv = document.createElement("div");
       caseDiv.textContent = motDivise;
       conteneurCases.appendChild(caseDiv);
-      caseDiv.style.margin = "20px";
+      caseDiv.style.margin = "10px";
       caseDiv.style.border = "1px solid black";
       caseDiv.style.padding = "10px";
       caseDiv.style.marginBottom = "20px";
       caseDiv.style.height = "32px";
     }
   }
-  // Utilisation des fonctions pour choisir un mot aléatoire, créer les cases avec des underscores et les afficher sur le DOM
- //const motChoisi = choisirMotAleatoire();
-const casesAvecUnderscores = creerCasesAvecUnderscores(motChoisi);
 
-// Appelez la fonction pour afficher les cases dans un élément du DOM (assurez-vous d'avoir un élément avec l'ID "conteneurCases" dans votre HTML)
+const casesAvecUnderscores = creerCasesAvecUnderscores(motChoisi);
 afficherCasesSurDOM(casesAvecUnderscores);
+
+
+
+
