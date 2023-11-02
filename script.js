@@ -109,6 +109,7 @@ let vies = 8;
 
 let lettresCliquees = [];
 
+
 lettres.forEach(lettre =>
     lettre.addEventListener("click", (e) => {
         let lettreCliquee = e.target.textContent
@@ -120,10 +121,16 @@ lettres.forEach(lettre =>
 
     } else {
         commentaires.textContent = "Vous avez déjà choisi cette lettre."
-    }
+    };
 
-
+    if(motDivise.includes(lettreCliquee)){
+    for(let i = 0; i < motDivise.length ; i++){
+       if(motDivise[i] === lettreCliquee) {
+        casesAvecUnderscores[i].textContent = lettreCliquee;
+       } 
+       afficherCasesSurDOM(casesAvecUnderscores);
+    }}
 }
     ));
 
-    
+    console.log(casesAvecUnderscores);
