@@ -1,7 +1,11 @@
 let recommencer = document.querySelector('.recommencer');
 let proposer = document.querySelector('.Proposer');
+let commentaires = document.querySelector("#commentaires");
 
-let lettres = document. querySelectorAll(".lettre");
+let lettres = document.querySelectorAll(".lettre");
+let caseDivs = document.querySelectorAll(".case");
+
+
 
 const motADecouvrir = ["bonzai", "colombe", "chevrefeuille", "astronaute", "documentaire", "iceberg", "biscornu", "horodateur", "hirondelle", "avalanche", "jacinthe", "charismatique", "bowling", "bibliophile", "architecture", "bourlingueur", "bibliotheque", "avalanche", "chronophrage", "carapace", "herisson", "escargot", "bateau", "scarabee", "telepherique", "feerique", "montagnard", "escapade", "ratatouille", "correspondance", "biodiversite", "parfum", "lecture", "poussette", "ordinateur", "concept", "concentration", "immersion"];
 
@@ -45,7 +49,6 @@ lettre.addEventListener("mouseout", ()=> {
 });
 
 });
-//_____________________________________________________________________________
 
 //Fonction pour choisir le mot à deviner
 
@@ -57,15 +60,13 @@ return motAleatoire
 };
 
 const motChoisi = choisirMotAleatoire();
-//console.log(motChoisi)
+console.log(motChoisi)
 
 //Couper le mot à deviner en lettres dans le tableau
 let mot = motChoisi;
 const motDivise = mot.split("");
 
-//console.log(motDivise);
-
-//_____________________________________________________________________________
+console.log(motDivise);
 
 //créer les cases avec underscrores à découvrir
 
@@ -81,8 +82,6 @@ function creerCasesAvecUnderscores(mot) {
     return casesAvecUnderscores;
   }
   
-
-  //
   function afficherCasesSurDOM(casesAvecUnderscores) {
     const conteneurCases = document.getElementById("cases"); 
   
@@ -95,12 +94,36 @@ function creerCasesAvecUnderscores(mot) {
       caseDiv.style.padding = "10px";
       caseDiv.style.marginBottom = "20px";
       caseDiv.style.height = "32px";
+    
     }
   }
-
+ 
 const casesAvecUnderscores = creerCasesAvecUnderscores(motChoisi);
+
 afficherCasesSurDOM(casesAvecUnderscores);
 
+let vies = 8;
 
 
+//Récupérer la lettre cliquée*/
 
+let lettresCliquees = [];
+
+lettres.forEach(lettre =>
+    lettre.addEventListener("click", (e) => {
+        let lettreCliquee = e.target.textContent
+        console.log(lettreCliquee);
+    
+
+    if(!lettresCliquees.includes(lettreCliquee)){
+        lettresCliquees.push(lettreCliquee);
+
+    } else {
+        commentaires.textContent = "Vous avez déjà choisi cette lettre."
+    }
+
+
+}
+    ));
+
+    

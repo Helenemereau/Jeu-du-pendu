@@ -55,9 +55,12 @@ main{
     border : 2px solid maroon;
     border-radius: 7px;
     background-color: ivory;  
-    
+
     
 }
+ span{
+    font-weight: bolder;
+ }
 
 .principal{
     display:flex;
@@ -82,6 +85,14 @@ main{
     
 }
 
+#commentaires{
+    text-align: center;
+
+}
+
+#essais{
+    text-align: center;
+}
 #alphabox{
     display:flex;
     flex-wrap: wrap;
