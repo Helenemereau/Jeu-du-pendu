@@ -3,7 +3,7 @@ let proposer = document.querySelector('.Proposer');
 let commentaires = document.querySelector("#commentaires");
 
 let lettres = document.querySelectorAll(".lettre");
-let caseDivs = document.querySelectorAll(".case");
+
 
 
 
@@ -68,41 +68,32 @@ const motDivise = mot.split("");
 
 console.log(motDivise);
 
-//créer les cases avec underscrores à découvrir
+//créer les cases avec underscrores à découvrir en fonction du nombre de lettres du mot à découvrir
 
-function creerCasesAvecUnderscores(mot) {
-    const casesAvecUnderscores = [];
-    for (let lettre of mot) {
-      if (lettre === ' ') {
-        casesAvecUnderscores.push(' ');
-      } else {
-        casesAvecUnderscores.push('_');
-      }
-    }
-    return casesAvecUnderscores;
-  }
-  
-  function afficherCasesSurDOM(casesAvecUnderscores) {
-    const conteneurCases = document.getElementById("cases"); 
-  
-    for (let motDivise of casesAvecUnderscores) {
-      const caseDiv = document.createElement("div");
-      caseDiv.textContent = motDivise;
-      conteneurCases.appendChild(caseDiv);
-      caseDiv.style.margin = "10px";
-      caseDiv.style.border = "1px solid black";
-      caseDiv.style.padding = "10px";
-      caseDiv.style.marginBottom = "20px";
-      caseDiv.style.height = "32px";
-    
-    }
-  }
- 
-const casesAvecUnderscores = creerCasesAvecUnderscores(motChoisi);
 
-afficherCasesSurDOM(casesAvecUnderscores);
+function creerCases(mot){
+  const conteneurCases = document.querySelector("#cases");
+
+  
+  for(let letr of mot){
+    const caseDiv = document.createElement("div");
+    if(letr === " "){
+      caseDiv.textContent = " ";
+    } else {
+      caseDiv.textContent = "_";
+    }
+    caseDiv.style.margin = "10px";
+    caseDiv.style.border = "1px solid black";
+    caseDiv.style.padding = "10px";
+    caseDiv.style.marginBottom = "20px";
+    caseDiv.style.height = "32px";
+    conteneurCases.appendChild(caseDiv);
+  }
+}
 
 let vies = 8;
+
+creerCases(mot);
 
 
 //Récupérer la lettre cliquée*/
@@ -126,11 +117,11 @@ lettres.forEach(lettre =>
     if(motDivise.includes(lettreCliquee)){
     for(let i = 0; i < motDivise.length ; i++){
        if(motDivise[i] === lettreCliquee) {
-        casesAvecUnderscores[i].textContent = lettreCliquee;
+        caseDiv[i].textContent = lettreCliquee;
        } 
-       afficherCasesSurDOM(casesAvecUnderscores);
+      
     }}
 }
     ));
 
-    console.log(casesAvecUnderscores);
+  
