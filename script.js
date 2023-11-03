@@ -3,7 +3,7 @@ let proposer = document.querySelector('.Proposer');
 let commentaires = document.querySelector("#commentaires");
 
 let lettres = document.querySelectorAll(".lettre");
-
+let casesDiv = document.querySelectorAll("caseDiv");
 
 
 
@@ -66,6 +66,7 @@ console.log(motChoisi)
 let mot = motChoisi;
 const motDivise = mot.split("");
 
+
 console.log(motDivise);
 
 //créer les cases avec underscrores à découvrir en fonction du nombre de lettres du mot à découvrir
@@ -73,6 +74,7 @@ console.log(motDivise);
 
 function creerCases(mot){
   const conteneurCases = document.querySelector("#cases");
+  const tableaucaseDiv = [];
 
   
   for(let letr of mot){
@@ -88,40 +90,52 @@ function creerCases(mot){
     caseDiv.style.marginBottom = "20px";
     caseDiv.style.height = "32px";
     conteneurCases.appendChild(caseDiv);
-  }
+    tableaucaseDiv.push(caseDiv);
+    
+    
+    
+  }console.log(tableaucaseDiv);
 }
 
-let vies = 8;
+
 
 creerCases(mot);
 
+const tableaucaseDiv = creerCases(mot);
 
-//Récupérer la lettre cliquée*/
 
+//Récupérer la lettre cliquée
 let lettresCliquees = [];
 
 
 lettres.forEach(lettre =>
-    lettre.addEventListener("click", (e) => {
-        let lettreCliquee = e.target.textContent
-        console.log(lettreCliquee);
-    
+  lettre.addEventListener("click", (e) => {
+      let lettreCliquee = e.target.textContent;
+      console.log(lettreCliquee);
 
-    if(!lettresCliquees.includes(lettreCliquee)){
-        lettresCliquees.push(lettreCliquee);
+      if (!lettresCliquees.includes(lettreCliquee)) {
+          lettresCliquees.push(lettreCliquee);
+      } else {
+          commentaires.textContent = "Vous avez déjà choisi cette lettre.";
+      }
 
-    } else {
-        commentaires.textContent = "Vous avez déjà choisi cette lettre."
-    };
+      // Convertissez la lettre cliquée en minuscules (ou majuscules) pour la comparaison
+      lettreCliquee = lettreCliquee.toLowerCase();
 
-    if(motDivise.includes(lettreCliquee)){
-    for(let i = 0; i < motDivise.length ; i++){
-       if(motDivise[i] === lettreCliquee) {
-        caseDiv[i].textContent = lettreCliquee;
-       } 
-      
-    }}
-}
-    ));
+      // Recherchez l'index de la lettre cliquée (en minuscules) dans motDivise
+      const indexLettre = motDivise.findIndex(letter => letter.toLowerCase() === lettreCliquee);
 
-  
+      if (indexLettre !== -1) {
+          // Utilisez l'index pour accéder à l'élément correspondant dans tableaucaseDiv
+          tableaucaseDiv[indexLettre].textContent = motDivise[indexLettre];
+      }
+  }
+));
+
+
+
+console.log(tableaucaseDiv);
+
+
+
+ 
