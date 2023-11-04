@@ -4,7 +4,8 @@ let commentaires = document.querySelector("#commentaires");
 
 let lettres = document.querySelectorAll(".lettre");
 let essais = document.querySelector("#essais")
-let imagePendu = document.querySelector("img");
+let image= document.querySelector("img");
+
 
 const motADecouvrir = [
   "BONZAI",
@@ -144,10 +145,12 @@ lettres.forEach((lettre) =>
         }
       });
 
+      //Gestion des vies
       if (!lettreCorrecte) {
         vies--;
         essais.textContent = `Il vous reste ${vies} vies`;
         console.log(vies);
+        
       } if(vies === 0){
         commentaires.textContent = ("Vous avez perdu !");
       }
