@@ -3,6 +3,8 @@ let proposer = document.querySelector(".Proposer");
 let commentaires = document.querySelector("#commentaires");
 
 let lettres = document.querySelectorAll(".lettre");
+let essais = document.querySelector("#essais")
+let imagePendu = document.querySelector("img");
 
 const motADecouvrir = [
   "bonzai",
@@ -114,12 +116,12 @@ function creerCases(mot) {
   });
 }
 
-let vies = 8;
+
 
 creerCases(mot);
 
-//Récupérer la lettre cliquée*/
-
+//Récupérer la lettre cliquée
+let vies = 7;
 let lettresCliquees = [];
 
 lettres.forEach((lettre) =>
@@ -128,27 +130,38 @@ lettres.forEach((lettre) =>
     console.log("lettreCliquee:" + lettreCliquee);
     console.log("lettresCliquees:" + lettresCliquees);
 
-    // la lettre a t elle déjà été utilisée ?
+    // Vérifier si la lettre a déjà été utilisée
     if (!lettresCliquees.includes(lettreCliquee)) {
       lettresCliquees.push(lettreCliquee);
+
+      let lettreCorrecte = false; // Indicateur pour vérifier si la lettre cliquée est correcte
+
+      // Parcourir le mot pour vérifier si la lettre cliquée est correcte
+      motDivise.forEach((lettreDuMot, index) => {
+        if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
+          allCaseDiv[index].textContent = lettreDuMot;
+          lettreCorrecte = true; // La lettre est correcte
+        }
+      });
+
+      if (!lettreCorrecte) {
+        vies--;
+        essais.textContent = `Il vous reste ${vies} vies`;
+        console.log(vies);
+      } if(vies === 0){
+        commentaires.textContent = ("Vous avez perdu !");
+      }
     } else {
       commentaires.textContent = "Vous avez déjà choisi cette lettre.";
     }
-
-    motDivise.forEach((lettreDuMot, index) => {
-      if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
-        allCaseDiv[index].textContent = lettreDuMot
-      }
-    });
-
   })
 );
+
 const allCaseDiv = document.querySelectorAll('.caseDiv')
 console.log(allCaseDiv);
 
 
-
-
+ 
 
 
 
