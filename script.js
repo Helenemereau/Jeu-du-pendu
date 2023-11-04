@@ -150,6 +150,7 @@ lettres.forEach((lettre) =>
         vies--;
         essais.textContent = `Il vous reste ${vies} vies`;
         console.log(vies);
+        image.src = `images/image-${vies}.png`;
         
       } if(vies === 0){
         commentaires.textContent = ("Vous avez perdu !");
