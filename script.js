@@ -7,6 +7,7 @@ let essais = document.querySelector("#essais")
 let image= document.querySelector("img");
 
 
+
 const motADecouvrir = [
   "BONZAI",
   "COLOMBE",
@@ -128,6 +129,7 @@ let lettresCliquees = [];
 lettres.forEach((lettre) =>
   lettre.addEventListener("click", (e) => {
     let lettreCliquee = e.target.textContent;
+    propMot.textContent =" ";
     console.log("lettreCliquee:" + lettreCliquee);
     console.log("lettresCliquees:" + lettresCliquees);
 
@@ -142,7 +144,9 @@ lettres.forEach((lettre) =>
         if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
           allCaseDiv[index].textContent = lettreDuMot;
           lettreCorrecte = true; // La lettre est correcte
+          
         }
+        
       });
 
       //Gestion des vies
@@ -171,7 +175,8 @@ proposer.addEventListener("click", () =>{
   let proposition = prompt("Proposez un mot : ");
   if (proposition === mot){
     commentaires.textContent = ("Vous avez gagné !!")
-  } commentaires.textContent = ("Ce n'est pas çà, reessayez une autre lettre.")
+  } alert("Ce n'est pas çà, reessayez une autre lettre.");
+  
 })
 
 
