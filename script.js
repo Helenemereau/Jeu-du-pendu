@@ -165,6 +165,16 @@ const allCaseDiv = document.querySelectorAll('.caseDiv')
 console.log(allCaseDiv);
 
 
+//Proposer un mot
+
+proposer.addEventListener("click", () =>{
+  let proposition = prompt("Proposez un mot : ");
+  if (proposition === mot){
+    commentaires.textContent = ("Vous avez gagné !!")
+  } commentaires.textContent = ("Ce n'est pas çà, reessayez une autre lettre.")
+})
+
+
  
 
 
