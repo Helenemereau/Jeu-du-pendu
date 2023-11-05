@@ -1,5 +1,4 @@
 
-
 let recommencer = document.querySelector(".recommencer");
 let proposer = document.querySelector(".Proposer");
 let commentaires = document.querySelector("#commentaires");
@@ -7,6 +6,7 @@ let commentaires = document.querySelector("#commentaires");
 let lettres = document.querySelectorAll(".lettre");
 let essais = document.querySelector("#essais")
 let image= document.querySelector("img");
+let motChoisi="";
 
 
 
@@ -80,24 +80,6 @@ lettres.forEach((lettre) => {
   });
 });
 
-//Fonction pour choisir le mot à deviner
-
-function choisirMotAleatoire() {
-  const indiceAleatoire = Math.floor(Math.random() * motADecouvrir.length);
-  let motAleatoire = motADecouvrir[indiceAleatoire];
-
-  return motAleatoire;
-}
-
-const motChoisi = choisirMotAleatoire();
-console.log(motChoisi);
-
-//Couper le mot à deviner en lettres dans le tableau
-let mot = motChoisi;
-const motDivise = mot.split("");
-
-console.log(motDivise);
-
 //créer les cases avec underscrores à découvrir en fonction du nombre de lettres du mot à découvrir
 
 function creerCases(mot) {
@@ -121,8 +103,28 @@ function creerCases(mot) {
 }
 
 
+//Fonction pour choisir le mot à deviner
+
+function choisirMotAleatoire() {
+  const indiceAleatoire = Math.floor(Math.random() * motADecouvrir.length);
+  let motAleatoire = motADecouvrir[indiceAleatoire];
+
+  return motAleatoire;
+}
+
+motChoisi = choisirMotAleatoire();
+console.log(motChoisi);
+
+//Couper le mot à deviner en lettres dans le tableau
+let mot = motChoisi;
+const motDivise = mot.split("");
+
+console.log(motDivise);
 
 creerCases(mot);
+
+
+function jouer(){
 
 //Récupérer la lettre cliquée
 let vies = 7;
@@ -172,11 +174,11 @@ lettres.forEach((lettre) =>
     }
   })
 );
-
+};
 const allCaseDiv = document.querySelectorAll('.caseDiv')
 console.log(allCaseDiv);
 
-
+jouer();
 //Proposer un mot
 
 proposer.addEventListener("click", () =>{
@@ -189,12 +191,28 @@ proposer.addEventListener("click", () =>{
 )
 
 
- 
 
 
+// Fonction pour réinitialiser le jeu
+function resetGame() {
+  // Réinitialisez les variables du jeu ici
+  lettresCliquees = [];
+  lettresCorrectes = 0;
+  vies = 7;
+  essais.textContent = `Il vous reste ${vies} vies`;
+  image.src = "images/image-7.png"; // Réinitialisez l'image ici
+  commentaires.textContent = "Choisissez une lettre"; // Réinitialisez les commentaires ici
 
+  // Réinitialisez les cases du mot à deviner
+  const conteneurCases = document.querySelector("#cases");
+  conteneurCases.innerHTML = ""; // Supprimez toutes les cases
+  motChoisi = choisirMotAleatoire();
+  creerCases(motChoisi); // Recréez les cases avec le nouveau mot
+console.log(motChoisi);
+jouer();
 
+}
 
- 
+// Associez la fonction de réinitialisation au bouton "Recommencer"
+recommencer.addEventListener("click", resetGame);
 
- 
