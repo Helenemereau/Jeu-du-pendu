@@ -1,3 +1,5 @@
+
+
 let recommencer = document.querySelector(".recommencer");
 let proposer = document.querySelector(".Proposer");
 let commentaires = document.querySelector("#commentaires");
@@ -180,10 +182,11 @@ console.log(allCaseDiv);
 proposer.addEventListener("click", () =>{
   let proposition = prompt("Proposez un mot : ");
   if (proposition === mot){
-    commentaires.textContent = ("Vous avez gagné !!")
-  } alert("Ce n'est pas çà, reessayez une autre lettre.");
+    commentaires.textContent =("Vous avez gagné !!")
+  } else {alert("Ce n'est pas çà, reessayez une autre lettre.")};
+}
   
-})
+)
 
 
  
@@ -191,5 +194,7 @@ proposer.addEventListener("click", () =>{
 
 
 
+
+ 
 
  
