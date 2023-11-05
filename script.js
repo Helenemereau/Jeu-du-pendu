@@ -125,29 +125,35 @@ creerCases(mot);
 //Récupérer la lettre cliquée
 let vies = 7;
 let lettresCliquees = [];
+let lettresCorrectes = 0;
 
 lettres.forEach((lettre) =>
   lettre.addEventListener("click", (e) => {
     let lettreCliquee = e.target.textContent;
-    propMot.textContent =" ";
+   
     console.log("lettreCliquee:" + lettreCliquee);
     console.log("lettresCliquees:" + lettresCliquees);
 
     // Vérifier si la lettre a déjà été utilisée
     if (!lettresCliquees.includes(lettreCliquee)) {
       lettresCliquees.push(lettreCliquee);
-
       let lettreCorrecte = false; // Indicateur pour vérifier si la lettre cliquée est correcte
 
       // Parcourir le mot pour vérifier si la lettre cliquée est correcte
       motDivise.forEach((lettreDuMot, index) => {
         if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
           allCaseDiv[index].textContent = lettreDuMot;
-          lettreCorrecte = true; // La lettre est correcte
-          
-        }
-        
+          lettreCorrecte = true; // La lettre est correcte 
+         
+          lettresCorrectes++
+         
+        } 
       });
+
+      //dire "Vous avez gagné quand toutes les lettres ont été trouvées"
+      if (lettresCorrectes === motDivise.length){
+        commentaires.textContent=("Vous avez GAGNE !!");
+      }
 
       //Gestion des vies
       if (!lettreCorrecte) {
