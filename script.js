@@ -187,8 +187,8 @@ jouer();
 
 proposer.addEventListener("click", () =>{
   let proposition = prompt("Proposez un mot : ");
-  if (proposition === mot){
-    commentaires.textContent =("Vous avez gagné !!")
+  if (proposition.toUpperCase === mot.toUpperCase){
+    commentaires.textContent =("Vous avez gagné !!, le mot était bien " + motChoisi);
   } else {alert("Ce n'est pas çà, reessayez une autre lettre.")};
 }
   
@@ -197,4 +197,3 @@ proposer.addEventListener("click", () =>{
 recommencer.addEventListener("click", ()=>{
 window.location.reload();
 })
-
