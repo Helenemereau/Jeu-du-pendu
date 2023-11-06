@@ -117,7 +117,7 @@ console.log(motChoisi);
 
 //Couper le mot à deviner en lettres dans le tableau
 let mot = motChoisi;
-const motDivise = mot.split("");
+let motDivise = mot.split("");
 
 console.log(motDivise);
 
@@ -179,6 +179,8 @@ const allCaseDiv = document.querySelectorAll('.caseDiv')
 console.log(allCaseDiv);
 
 jouer();
+
+
 //Proposer un mot
 
 proposer.addEventListener("click", () =>{
@@ -192,27 +194,29 @@ proposer.addEventListener("click", () =>{
 
 
 
-
-// Fonction pour réinitialiser le jeu
+//Fonction pour réinitialiser le jeu
 function resetGame() {
-  // Réinitialisez les variables du jeu ici
+  
   lettresCliquees = [];
   lettresCorrectes = 0;
   vies = 7;
   essais.textContent = `Il vous reste ${vies} vies`;
-  image.src = "images/image-7.png"; // Réinitialisez l'image ici
-  commentaires.textContent = "Choisissez une lettre"; // Réinitialisez les commentaires ici
+  image.src = "images/image-7.png"; // Réinitialisez l'image 
+  commentaires.textContent = "Choisissez une lettre"; 
 
   // Réinitialisez les cases du mot à deviner
-  const conteneurCases = document.querySelector("#cases");
+  let conteneurCases = document.querySelector("#cases");
   conteneurCases.innerHTML = ""; // Supprimez toutes les cases
   motChoisi = choisirMotAleatoire();
-  creerCases(motChoisi); // Recréez les cases avec le nouveau mot
-console.log(motChoisi);
-jouer();
+  let mot = motChoisi;
+  let motDivise = mot.split("");
+  console.log(motDivise);
+  creerCases(motDivise); // Recréez les cases avec le nouveau mot
+  console.log(mot);
 
+  jouer();
+ 
 }
 
 // Associez la fonction de réinitialisation au bouton "Recommencer"
 recommencer.addEventListener("click", resetGame);
-
