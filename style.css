@@ -25,6 +25,7 @@ h1{
 h2{
     text-align: center; 
 }
+
 img{
     border : 2px solid maroon;
     border-radius: 7px;
@@ -32,9 +33,7 @@ img{
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end:2;
-    background-color: ivory; 
-    
-    
+    background-color: ivory;     
 }
 
 container{
@@ -62,15 +61,16 @@ main{
     font-weight: bolder;
  }
 
-.principal{
-    display:flex;
-    flex-direction: column;
+ footer{
 
+    border : 2px solid maroon;
+    border-radius: 7px;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end:4;
+    background-color: ivory; 
 }
-
-
-
-
 
 #alphabet{
 
@@ -80,8 +80,7 @@ main{
     grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end:3;
-    background-color: ivory; 
-    
+    background-color: ivory;    
     
 }
 
@@ -106,6 +105,10 @@ main{
 }
 
 
+.principal{
+    display:flex;
+    flex-direction: column;
+}
 
 
 .lettre{
@@ -119,16 +122,7 @@ main{
     align-items: center;
     background-color: chocolate;
 }
-footer{
 
-    border : 2px solid maroon;
-    border-radius: 7px;
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end:4;
-    background-color: ivory; 
-}
 
 .pied{
     display:flex;

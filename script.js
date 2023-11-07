@@ -53,20 +53,23 @@ const motADecouvrir = [
 
 //Changer la couleur des boutons "Recommencer" et "Proposer un mot" au passage de la souris
 recommencer.addEventListener("mouseover", () => {
-  recommencer.style.backgroundColor = "#E54500";
-  
+recommencer.style.backgroundColor = "#E54500";
+recommencer.style.cursor = "pointer"; 
 });
+
 recommencer.addEventListener("mouseout", () => {
-  recommencer.style.backgroundColor = "rgb(121, 61, 29)";
- 
+recommencer.style.backgroundColor = "rgb(121, 61, 29)"; 
 });
 
 proposer.addEventListener("mouseover", () => {
-  proposer.style.backgroundColor = "#E54500";
+proposer.style.backgroundColor = "#E54500";
+proposer.style.cursor = "pointer";
 });
+
 proposer.addEventListener("mouseout", () => {
-  proposer.style.backgroundColor = "rgb(121, 61, 29)";
+proposer.style.backgroundColor = "rgb(121, 61, 29)";
 });
+
 
 //Changement d'apparence des lettres de l'alphabet
 
@@ -74,6 +77,7 @@ lettres.forEach((lettre) => {
   lettre.addEventListener("mouseover", () => {
     lettre.style.fontWeight = "bold";
     lettre.style.scale = 1.2;
+    lettre.style.cursor = "pointer";
   });
 
   lettre.addEventListener("mouseout", () => {
@@ -82,7 +86,8 @@ lettres.forEach((lettre) => {
   });
 });
 
-//créer les cases avec underscrores à découvrir en fonction du nombre de lettres du mot à découvrir
+
+//créer les cases avec underscrores en fonction du nombre de lettres du mot à découvrir
 
 function creerCases(mot) {
   const conteneurCases = document.querySelector("#cases");
@@ -110,17 +115,17 @@ function creerCases(mot) {
 function choisirMotAleatoire() {
   const indiceAleatoire = Math.floor(Math.random() * motADecouvrir.length);
   let motAleatoire = motADecouvrir[indiceAleatoire];
-
   return motAleatoire;
 }
 
 motChoisi = choisirMotAleatoire();
 console.log(motChoisi);
 
+
 //Couper le mot à deviner en lettres dans le tableau
+
 let mot = motChoisi;
 let motDivise = mot.split("");
-
 console.log(motDivise);
 
 creerCases(mot);
@@ -135,38 +140,36 @@ let lettresCorrectes = 0;
 
 lettres.forEach((lettre) =>
   lettre.addEventListener("click", (e) => {
-    let lettreCliquee = e.target.textContent;
+  let lettreCliquee = e.target.textContent;
    
     console.log("lettreCliquee:" + lettreCliquee);
     console.log("lettresCliquees:" + lettresCliquees);
 
-    // Vérifier si la lettre a déjà été utilisée
+  // Vérifier si la lettre a déjà été utilisée
     if (!lettresCliquees.includes(lettreCliquee)) {
-      lettresCliquees.push(lettreCliquee);
-      let lettreCorrecte = false; // Indicateur pour vérifier si la lettre cliquée est correcte
+    lettresCliquees.push(lettreCliquee);
+    let lettreCorrecte = false; // Indicateur pour vérifier si la lettre cliquée est correcte
 
-      // Parcourir le mot pour vérifier si la lettre cliquée est correcte
+  // Parcourir le mot pour vérifier si la lettre cliquée est correcte
       motDivise.forEach((lettreDuMot, index) => {
-        if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
-          allCaseDiv[index].textContent = lettreDuMot;
-          lettreCorrecte = true; // La lettre est correcte 
-         
-          lettresCorrectes++
-         
-        } 
+      if (lettreDuMot.toUpperCase() === lettreCliquee.toUpperCase()) {
+      allCaseDiv[index].textContent = lettreDuMot;
+      lettreCorrecte = true; // La lettre est correcte 
+      lettresCorrectes++
+      } 
       });
 
-      //dire "Vous avez gagné quand toutes les lettres ont été trouvées"
+    //dire "Vous avez gagné quand toutes les lettres ont été trouvées"
       if (lettresCorrectes === motDivise.length){
-        commentaires.textContent=("Vous avez GAGNE !!");
+      commentaires.textContent=("Vous avez GAGNE !!");
       }
 
-      //Gestion des vies
+    //Gestion des vies
       if (!lettreCorrecte) {
-        vies--;
-        essais.textContent = `Il vous reste ${vies} vies`;
-        console.log(vies);
-        image.src = `images/image-${vies}.png`;
+      vies--;
+      essais.textContent = `Il vous reste ${vies} vies`;
+      console.log(vies);
+      image.src = `images/image-${vies}.png`;
         
       } if(vies === 0){
         commentaires.textContent = ("Vous avez perdu !");
@@ -177,6 +180,8 @@ lettres.forEach((lettre) =>
   })
 );
 };
+
+
 const allCaseDiv = document.querySelectorAll('.caseDiv')
 console.log(allCaseDiv);
 
@@ -188,12 +193,13 @@ jouer();
 proposer.addEventListener("click", () =>{
   let proposition = prompt("Proposez un mot : ");
   if (proposition.toUpperCase === mot.toUpperCase){
-    commentaires.textContent =("Vous avez gagné !!, le mot était bien " + motChoisi);
+  commentaires.textContent =("Vous avez gagné !!, le mot était bien " + motChoisi);
   } else {alert("Ce n'est pas çà, reessayez une autre lettre.")};
-}
+});
   
-)
+
+//Refaire une partie
 
 recommencer.addEventListener("click", ()=>{
 window.location.reload();
-})
+});
